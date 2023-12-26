@@ -31,7 +31,7 @@ const supportedTypes = [
   'image/webp'
 ];
 // Constants for authentication and API URL
-const authToken = await Axios.get(`${API_BASE_URL}/tokens/`) ;
+
 const apiUrl = 'https://graph.facebook.com/v17.0/120586281145678/messages';
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 function ChatWindow({ selectedContact }) {
@@ -47,7 +47,27 @@ function ChatWindow({ selectedContact }) {
   const [recordedMp, setRecordedMp] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isFileInputVisible, setFileInputVisible] = useState(false);
+  const [authToken, setAuthToken] = useState(null);
 
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const response = await Axios.get(`${API_BASE_URL}/tokens/`);
+      
+        if (response.data) {
+          const token = response.data.token;
+          setAuthToken(token);
+        } else {
+          console.log('No tokens found');
+        }
+      } catch (error) {
+        console.error('Error fetching tokens:', error);
+      }
+    };
+
+    // Call the fetchToken function when the component mounts
+    fetchToken();
+  }, []);
   
   const token = localStorage.getItem('token');
   console.log("token", token);
