@@ -31,8 +31,8 @@ const supportedTypes = [
   'image/webp'
 ];
 // Constants for authentication and API URL
-const authToken = 'EAAFSezp24bEBO41HSmF0OiFr74AsSfEs4JVadg2UUZCwPqAbvAVnqoBkaT8rdBQ3s1Hh4zzMr7NO39mbcoOKe88AwzdXt26tKHlbZACAf5Udg9mH1jtPb3OU0DssnHopKilepmPdBnoML26xNAH3rDqMTmQIeBwjZAfKswosP0zP2AfJKfX8ZB6zLC804QLcR2ofzLuq2tZACx0R3xgbedyNwjyCsQJ1QeM0pzm9bAwW2';
-const apiUrl = 'https://graph.facebook.com/v17.0/189179114270760/messages';
+const authToken = await axios.get(`${API_BASE_URL}/tokens/`) ;
+const apiUrl = 'https://graph.facebook.com/v17.0/120586281145678/messages';
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 function ChatWindow({ selectedContact }) {
   console.log("selected", selectedContact);
@@ -327,7 +327,7 @@ function ChatWindow({ selectedContact }) {
     //const authToken = 'EAAJ0ZApM92koBOxxnc62YljKyZAcyObxfCZB2bGYhZBSPDNOw2AFxjaqmvpOflyFjrMtdMXvbxUgsI7H7ObtLtErcfz69bNZBBfZBeOYednHq4B602pA9aiRxhm7QaHI7qutRB8AVrxFZBS95igdO7f60ZA2AazkQNUAZB1RwWljGSxdZAEZB1CoDthEiOfeeaIZChfXN7gUMXyLfBZAdwzSOSaZAe3AbWag9ugXPtRK9UEsar1ZCQZD';
 
 
-    const phoneNumberID = '189179114270760'; 
+    const phoneNumberID = '120586281145678'; 
     const apiUrl = `https://graph.facebook.com/v17.0/${phoneNumberID}/media`;
   
     if (!supportedTypes.includes(file.type)) {
