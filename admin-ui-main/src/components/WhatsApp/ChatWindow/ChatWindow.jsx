@@ -31,7 +31,7 @@ const supportedTypes = [
   'image/webp'
 ];
 // Constants for authentication and API URL
-const authToken = await axios.get(`${API_BASE_URL}/tokens/`) ;
+const authToken = await Axios.get(`${API_BASE_URL}/tokens/`) ;
 const apiUrl = 'https://graph.facebook.com/v17.0/120586281145678/messages';
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 function ChatWindow({ selectedContact }) {
